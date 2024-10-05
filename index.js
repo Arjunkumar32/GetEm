@@ -202,20 +202,16 @@ client.on(Events.MessageCreate, async message => {
                     break;
 
                 case 3:
-
                     await message.delete();
                     try {
-                       
                         const memberToKick = await message.guild.members.fetch(message.author.id);
 
                         if (!memberToKick) {
-
                             if (modLogChannel) modLogChannel.send(`User ${message.author.tag} not found .`);
                             break;
                         }
 
                         await message.author.send(`You have been kicked from ${message.guild.name}due to violating server rules bcz of message: "${message.content}"`);
-
                         await memberToKick.kick('VIOLATED SERVER RULES.');
 
                         if (modLogChannel) modLogChannel.send(`Message from ${message.author.tag} deleted and user kicked (ID: ${check.id})`);
